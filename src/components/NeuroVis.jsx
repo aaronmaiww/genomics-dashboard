@@ -364,9 +364,11 @@ const EnhancedChart = ({ data, title, latentId }) => {
 };
 
 const NeuroVis = () => {
+  // FIXED: All hooks are declared at the top level before any conditional returns
   const [neuronData, setNeuronData] = useState(null);
   const [selectedLatents, setSelectedLatents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null); // Moved up before any returns!
 
   useEffect(() => {
     setIsLoading(true);
@@ -418,8 +420,6 @@ const NeuroVis = () => {
       <span className="ml-3">Loading genomic data...</span>
     </div>
   );
-
-  const [errorMessage, setErrorMessage] = useState(null);
 
   if (!neuronData) return (
     <div className="p-4 bg-red-100 text-red-700 rounded">
