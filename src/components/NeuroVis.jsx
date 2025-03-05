@@ -371,21 +371,10 @@ const NeuroVis = () => {
   useEffect(() => {
     setIsLoading(true);
     
-    // Try multiple potential locations for data file
+    // For Netlify deployment, use a simple path
     const dataUrls = [
-      // Try smaller file first in case of size limitations
-      import.meta.env.BASE_URL + 'latents_data_small.json',
-      './latents_data_small.json',
-      '/latents_data_small.json',
-      // Fall back to full data file
-      import.meta.env.BASE_URL + 'latents_data.json',
-      './latents_data.json',
-      '/latents_data.json',
-      // Try absolute URLs
-      'https://aaronmaiww.github.io/genomics-dashboard/latents_data_small.json',
-      'https://aaronmaiww.github.io/genomics-dashboard/latents_data.json',
-      // As a last resort, try loading from a public CORS-enabled service
-      'https://raw.githubusercontent.com/aaronmaiww/genomics-dashboard/gh-pages/latents_data.json'
+      '/data.json',  // This should work on Netlify
+      '/latents_data.json'  // Fallback to original name
     ];
     console.log('Trying data URLs:', dataUrls);
     
