@@ -438,6 +438,7 @@ const NeuroVis = () => {
   return (
     <div className="p-4 max-w-full mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">SAE Latent Activations Dashboard</h1>
+      {/* Dashboard updated with improved UI and functionality */}
       
       <div className="mb-6">
         <h2 className="text-xl mb-2">Select Latents to Visualize</h2>
