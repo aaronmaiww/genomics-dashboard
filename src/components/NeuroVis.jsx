@@ -373,11 +373,19 @@ const NeuroVis = () => {
     
     // Try multiple potential locations for data file
     const dataUrls = [
+      // Try smaller file first in case of size limitations
+      import.meta.env.BASE_URL + 'latents_data_small.json',
+      './latents_data_small.json',
+      '/latents_data_small.json',
+      // Fall back to full data file
       import.meta.env.BASE_URL + 'latents_data.json',
       './latents_data.json',
       '/latents_data.json',
-      import.meta.env.BASE_URL + '/latents_data.json',
-      'https://aaronmaiww.github.io/genomics-dashboard/latents_data.json'
+      // Try absolute URLs
+      'https://aaronmaiww.github.io/genomics-dashboard/latents_data_small.json',
+      'https://aaronmaiww.github.io/genomics-dashboard/latents_data.json',
+      // As a last resort, try loading from a public CORS-enabled service
+      'https://raw.githubusercontent.com/aaronmaiww/genomics-dashboard/gh-pages/latents_data.json'
     ];
     console.log('Trying data URLs:', dataUrls);
     
@@ -410,6 +418,7 @@ const NeuroVis = () => {
       })
       .catch(err => {
         console.error('Error loading data:', err);
+        setErrorMessage(`Failed to load data: ${err.message}. Please try again later or contact support.`);
         setIsLoading(false);
       });
   }, []);
@@ -421,9 +430,19 @@ const NeuroVis = () => {
     </div>
   );
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   if (!neuronData) return (
     <div className="p-4 bg-red-100 text-red-700 rounded">
-      Error loading genomic data. Please check the data source and try again.
+      <h2 className="font-bold mb-2">Error loading genomic data</h2>
+      <p>{errorMessage || "Please check the data source and try again."}</p>
+      <div className="mt-4 p-2 bg-red-50 text-xs font-mono">
+        <p className="mb-1">Debugging information:</p>
+        <ul className="list-disc list-inside">
+          <li>Base URL: {import.meta.env.BASE_URL || "[empty]"}</li>
+          <li>Location: {window.location.href}</li>
+        </ul>
+      </div>
     </div>
   );
 
