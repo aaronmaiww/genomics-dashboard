@@ -370,9 +370,19 @@ const NeuroVis = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('/latents_data.json')
-      .then(res => res.json())
+    
+    // Use relative or base path for GitHub Pages compatibility
+    const dataUrl = import.meta.env.BASE_URL + 'latents_data.json';
+    
+    fetch(dataUrl)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+        }
+        return res.json();
+      })
       .then(data => {
+        console.log('Data loaded successfully:', Object.keys(data).length, 'latents found');
         setNeuronData(data);
         // Extract initial latent keys (limited to first 5 for better initial performance)
         const allLatents = Object.keys(data);
