@@ -371,16 +371,35 @@ const NeuroVis = () => {
   useEffect(() => {
     setIsLoading(true);
     
-    // Use relative or base path for GitHub Pages compatibility
-    const dataUrl = import.meta.env.BASE_URL + 'latents_data.json';
+    // Try multiple potential locations for data file
+    const dataUrls = [
+      import.meta.env.BASE_URL + 'latents_data.json',
+      './latents_data.json',
+      '/latents_data.json',
+      import.meta.env.BASE_URL + '/latents_data.json',
+      'https://aaronmaiww.github.io/genomics-dashboard/latents_data.json'
+    ];
+    console.log('Trying data URLs:', dataUrls);
     
-    fetch(dataUrl)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
-        }
-        return res.json();
-      })
+    // Function to try loading from different URLs
+    const tryLoadData = (urls, index = 0) => {
+      if (index >= urls.length) {
+        throw new Error('Failed to load data from all possible locations');
+      }
+      
+      return fetch(urls[index])
+        .then(res => {
+          if (!res.ok) {
+            console.log(`Failed to fetch from ${urls[index]}: ${res.status}`);
+            return tryLoadData(urls, index + 1);
+          }
+          console.log(`Successfully loaded data from ${urls[index]}`);
+          return res.json();
+        });
+    };
+    
+    // Try all URLs until one works
+    tryLoadData(dataUrls)
       .then(data => {
         console.log('Data loaded successfully:', Object.keys(data).length, 'latents found');
         setNeuronData(data);
