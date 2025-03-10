@@ -32,15 +32,6 @@ The dashboard visualizes latent neuron activations on DNA motifs. Each neuron in
 - **Contextual Analysis**: The surrounding genomic context provides clues about functional regions
 - **Annotation Correlations**: Annotations help identify the biological function of detected patterns
 
-## Example: Fluorescent Protein Detection
-
-One interesting finding visualized in the dashboard is a neuron specialized in detecting DNA sequences associated with fluorescent proteins:
-
-- **Key Motif**: CGAGGG
-- **Top Activations**: Found in various fluorescent protein genes (EGFP, mCherry, mTurquoise2)
-- **Statistical Significance**: Extremely significant E-values (e.g., 8.1e-206)
-- **GC Content**: Optimized around 61-71% GC content
-
 ## Accessing the Source Code
 
 While this repository contains the source code for the dashboard, the primary purpose is educational and reference. The live version hosted on Netlify is the recommended way to interact with the visualization.
