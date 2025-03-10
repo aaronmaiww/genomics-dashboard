@@ -2,7 +2,8 @@
 
 A web-based visualization tool for exploring and analyzing genomic latent activations, with a focus on DNA motifs and their biological significance.
 
-![Genomics Dashboard Screenshot](https://via.placeholder.com/800x450?text=Genomics+Dashboard+Screenshot)
+![Genomics Dashboard Screenshot](https://github.com/user-attachments/assets/e655305b-f2b5-458d-9de0-1fb8965eec71)
+
 
 ## About This Repository
 
