@@ -7,9 +7,10 @@ A web-based visualization tool for exploring and analyzing genomic latent activa
 
 ## About This Repository
 
-This repository serves as the companion code to the live [Genomics Dashboard](https://genomics-dashboard.netlify.app) hosted on Netlify. The dashboard provides researchers with interactive visualizations of SAE (Sparse Autoencoder) latent activations in genomic data.
+This repository serves as the companion code to the live [Genomics Dashboard](https://interpretglm.netlify.app/) hosted on Netlify. The dashboard provides researchers with interactive visualizations of SAE (Sparse Autoencoder) latent activations in genomic data.
+This repository serves as the companion code to the live [Genomics Dashboard]) hosted on Netlify. The dashboard provides researchers with interactive visualizations of SAE (Sparse Autoencoder) latent activations in genomic data.
 
-**Live Dashboard:** [https://genomics-dashboard.netlify.app](https://genomics-dashboard.netlify.app)
+**Live Dashboard:** [Genomics Dashboard](https://interpretglm.netlify.app/)
 
 ## Dashboard Features
 
