@@ -1193,9 +1193,9 @@ useEffect(() => {
                         {LATENT_EXPLANATIONS[latent].category}
                       </span>
                       <span className="ml-px px-2 py-0.5 text-sm bg-green-100 text-green-800 border border-green-200 rounded-r-full group relative cursor-help">
-                        F1: {LATENT_EXPLANATIONS[latent].f1Score.toFixed(3)}
+                        Domain F1: {LATENT_EXPLANATIONS[latent].f1Score.toFixed(3)}
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block w-64 p-2 bg-gray-800 text-white text-xs rounded shadow-lg z-10">
-                          <p className="mb-1 font-semibold">F1-Score: {LATENT_EXPLANATIONS[latent].f1Score.toFixed(3)}</p>
+                          <p className="mb-1 font-semibold">Domain F1-Score: {LATENT_EXPLANATIONS[latent].f1Score.toFixed(3)}</p>
                           <p>Higher scores indicate this latent is more precisely tuned to its specialized genomic element with fewer false activations on other elements.</p>
                         </div>
                       </span>
@@ -1276,7 +1276,7 @@ useEffect(() => {
                                   </p>
                                 </div>
                                 <div className="flex items-center gap-1 group relative">
-                                  <span className="text-xs text-gray-500">F1-score:</span>
+                                  <span className="text-xs text-gray-500">Domain F1-score:</span>
                                   <span className={`text-sm font-bold px-2 py-0.5 rounded ${
                                     LATENT_EXPLANATIONS[latent].f1Score >= 0.8 ? 'bg-green-100 text-green-800' : 
                                     LATENT_EXPLANATIONS[latent].f1Score >= 0.7 ? 'bg-blue-100 text-blue-800' : 
@@ -1285,8 +1285,8 @@ useEffect(() => {
                                     {LATENT_EXPLANATIONS[latent].f1Score.toFixed(3)}
                                   </span>
                                   <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block w-64 p-2 bg-gray-800 text-white text-xs rounded shadow-lg z-10">
-                                    <p className="mb-1 font-semibold">What is the F1-score?</p>
-                                    <p>The F1-score measures how precisely this latent identifies its specialized genomic element. Higher scores (closer to 1.0) indicate the latent responds almost exclusively to this element and rarely to others.</p>
+                                    <p className="mb-1 font-semibold">What is the Domain F1-score?</p>
+                                    <p>The Domain F1-score measures how precisely this latent identifies its specialized genomic element. Higher scores (closer to 1.0) indicate the latent responds almost exclusively to this element and rarely to others.</p>
                                   </div>
                                 </div>
                               </div>
